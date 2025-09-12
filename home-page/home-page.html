@@ -1,0 +1,49 @@
+<div class="container-fluid mt-5">
+  <div class="row">
+
+    <!-- Left Sidebar Filter -->
+    <div class="col-lg-3 mb-4">
+      <h5 class="fw-bold mb-3">Filter & Sort</h5>
+
+      <!-- Sort By Price -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Sort by Price:</label>
+        <select class="form-select" #sortSelect (change)="sortProducts(sortSelect.value)">
+          <option value="">Select</option>
+          <option value="lowToHigh">Low to High</option>
+          <option value="highToLow">High to Low</option>
+        </select>
+      </div>
+
+      <!-- Filter By Price Range -->
+      <div class="mb-3">
+        <label class="form-label fw-semibold">Price Range:</label>
+        <div class="form-check" *ngFor="let range of priceRanges">
+          <input class="form-check-input" type="radio" name="priceRange" (change)="filterByPrice(range)" />
+          <label class="form-check-label">{{ range.label }}</label>
+        </div>
+        <button class="btn btn-sm btn-link text-danger p-0 mt-2" (click)="clearFilters()">Clear Filters</button>
+      </div>
+    </div>
+
+    <!-- Product Grid -->
+    <div class="col-lg-9">
+      <h2 class="text-center fw-bold mb-4">SmartKart IoT Products</h2>
+      <div class="row g-4">
+        <div class="col-md-3 mb-4" *ngFor="let product of products">
+          <div class="card h-100 shadow-sm">
+            <img [src]="product.imageUrl" class="card-img-top" [alt]="product.name" style="height: 200px; object-fit: cover;">
+            <div class="card-body">
+              <h5 class="card-title">{{ product.name }}</h5>
+              <p class="card-text text-muted">{{ product.description }}</p>
+              <p class="fw-bold">₹{{ product.price }}</p>
+              <button class="btn btn-primary w-100" (click)="addProductToCart(product)">Add to Cart</button>
+            </div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+
+  </div>
+</div>

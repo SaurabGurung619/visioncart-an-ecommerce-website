@@ -1,0 +1,15 @@
+.card img {
+    height: 180px;
+    object-fit: cover;
+    border-radius: 12px 12px 0 0;
+  }
+  
+  .card {
+    border-radius: 12px;
+    transition: transform 0.2s ease-in-out;
+  }
+  
+  .card:hover {
+    transform: scale(1.03);
+  }
+  
